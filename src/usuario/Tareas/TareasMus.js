@@ -12,11 +12,12 @@ export default class TareasMus extends Component {
             isLoading: true,
             isEmpty: true,
             refreshing: false,
-            lostConexion: false
+            lostConexion: false,
+            dataSource:[]
         }
     }
     _Onrefresh() {
-        this.setState({ refreshing: true, isLoading: true, lostConexion: false });
+        this.setState({ refreshing: true, isLoading: true, lostConexion: false,dataSource:[] });
         this.componentDidMount();
         this.setState({ refreshing: false });
     }
@@ -100,7 +101,7 @@ export default class TareasMus extends Component {
             <Container>
                 <Content padder refreshControl={<RefreshControl
                     refreshing={this.state.refreshing}
-                    onRefresh={this._Onrefresh.bind(this)} />}>
+                    onRefresh={this._Onrefresh.this(this)} />}>
                     <List
                         dataArray={this.state.dataSource}
                         renderRow={(rowData) =>

@@ -45,6 +45,7 @@ export class LoginScreen extends Component {
             AsyncStorage.setItem('grupo', responseJson.grupo);
             global.name=responseJson.name+" "+responseJson.apat+" "+responseJson.amat;
             global.grado=responseJson.grado;
+            global.idgrupo = responseJson.idGrupo;
             global.grupo=responseJson.grupo;
             this.props.navigation.navigate('App');
           }

@@ -12,11 +12,12 @@ export default class TareasEn extends Component {
             isLoading: true,
             isEmpty: true,
             refreshing: false,
-            lostConexion: false
+            lostConexion: false,
+            dataSource:[]
         }
     }
     _Onrefresh() {
-        this.setState({ refreshing: true, isLoading: true, lostConexion: false });
+        this.setState({ refreshing: true, isLoading: true, lostConexion: false,dataSource:[] });
         this.componentDidMount();
         this.setState({ refreshing: false });
     }

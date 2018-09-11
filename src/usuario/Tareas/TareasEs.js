@@ -12,11 +12,12 @@ export default class TareasEs extends Component {
             isLoading: true,
             isEmpty: true,
             refreshing: false,
-            lostConexion: false
+            lostConexion: false,
+            dataSource:[]
         }
     }
     _Onrefresh() {
-        this.setState({ refreshing: true, isLoading: true, lostConexion: false });
+        this.setState({ refreshing: true, isLoading: true, lostConexion: false,dataSource:[] });
         this.componentDidMount();
         this.setState({ refreshing: false });
     }
@@ -69,7 +70,7 @@ export default class TareasEs extends Component {
 
                     <Content padder refreshControl={<RefreshControl
                         refreshing={this.state.refreshing}
-                        onRefresh={this._Onrefresh.bind(this)} />}>
+                        onRefresh={this._Onrefresh} />}>
                         <Text style={{ color: "rgba(0,0,0,0.5)", fontSize: 40, fontWeight: "bold", textAlign: "center" }}>Sin conexion a Internet</Text>
                         <View style={{ justifyContent: "center", alignItems: "center", flex: 1 }}>
                             <TouchableOpacity style={{ borderWidth: 1, borderRadius: 5, borderColor: "grey" }} onPress={this._Onrefresh.bind(this)}>

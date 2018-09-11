@@ -55,7 +55,14 @@ export default class InfoScreen extends Component {
   }
   logOut = async () => {
     await AsyncStorage.clear();
-    AsyncStorage.setItem("ShowRealApp","true");
+    global.name = "";
+    global.grupo = "";
+    global.grado = "";
+    global.foto = "";
+    global.token = "";
+    global.idgrupo = "";
+    global.nivel = "";
+    AsyncStorage.setItem("ShowRealApp", "true");
     this.props.navigation.navigate('AuthLoading');
   }
   render() {
