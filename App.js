@@ -53,12 +53,14 @@ export default class App extends Component {
 
   onIds(device) {
     global.token = device.userId;
+    AsyncStorage.setItem("TokenID",global.token);
   }
   getData = async () => {
     global.name = await AsyncStorage.getItem("name");
     global.grado = await AsyncStorage.getItem("grado");
     global.grupo = await AsyncStorage.getItem("grupo");
     global.idgrupo = await AsyncStorage.getItem("grupoToken");
+    global.token = await AsyncStorage.getItem("TokenID");
   }
   componentDidMount() {
     this.getData();

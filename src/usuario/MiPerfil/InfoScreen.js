@@ -54,16 +54,35 @@ export default class InfoScreen extends Component {
     this.getData()
   }
   logOut = async () => {
-    await AsyncStorage.clear();
-    global.name = "";
-    global.grupo = "";
-    global.grado = "";
-    global.foto = "";
-    global.token = "";
-    global.idgrupo = "";
-    global.nivel = "";
-    AsyncStorage.setItem("ShowRealApp", "true");
-    this.props.navigation.navigate('AuthLoading');
+    let idAlumno = await AsyncStorage.getItem("userToken");
+    fetch(`${ServerURL}/logoutApp.php`, {
+      method: "post",
+      header: {
+        "Accept": "application/json",
+        "content-type": "application/json",
+
+      }, body: JSON.stringify({
+        idAlumno: idAlumno
+      })
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        if (responseJson == true) {
+          AsyncStorage.clear();
+          global.name = "";
+          global.grupo = "";
+          global.grado = "";
+          global.foto = "";
+          global.idgrupo = "";
+          global.nivel = "";
+          AsyncStorage.setItem("ShowRealApp", "true");
+          AsyncStorage.setItem("TokenID",global.token);
+          console.warn(global.token);
+          this.props.navigation.navigate('AuthLoading');
+        }
+      }).catch((error) = {
+
+      });
   }
   render() {
     Moment.locale('es');

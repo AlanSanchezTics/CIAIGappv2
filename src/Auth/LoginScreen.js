@@ -10,7 +10,6 @@ export class LoginScreen extends Component {
           isLoading: false
         }
       }
-
       logeo = async () =>{
         Keyboard.dismiss;
         this.setState({
