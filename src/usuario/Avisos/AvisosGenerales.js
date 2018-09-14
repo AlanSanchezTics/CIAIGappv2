@@ -11,11 +11,12 @@ export default class AvisosGenerales extends Component {
         this.state = {
             isLoading: true,
             isEmpty: true,
-            refreshing: false
+            refreshing: false,
+            dataSource:[]
         }
     }
     _Onrefresh() {
-        this.setState({ refreshing: true, isLoading: true, lostConexion: false });
+        this.setState({ refreshing: true, isLoading: true, lostConexion: false, dataSource:[]});
         this.componentDidMount();
         this.setState({ refreshing: false });
     }
